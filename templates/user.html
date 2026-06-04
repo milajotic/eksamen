@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nailicious.no - Mine bestillinger</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="logo">
+        <a href="/">
+            <img src="/static/images/Nailicous.svg" alt="Nailicous with a cursive font and a strawberry stem on the u">
+        </a>  
+    </div>
+    
+    <div class="subtitle">
+        <h1>Mine bestillinger</h1>
+    </div>
+
+    <div class="back-btn">
+        <a href="/">Tilbake</a>
+    </div>
+
+    <div class="booking">
+        <table>
+            <tr>
+                <th>Kunde</th>
+                <th>Tjeneste</th>
+                <th>Dato</th>
+                <th>Tid</th>
+                <th>Handling</th>
+            </tr>
+            {% for b in bookings %}
+            <tr>
+                <td>{{ b[1] }}</td>
+                <td>{{ b[2] }}</td>
+                <td>{{ b[3] }}</td>
+                <td>{{ b[4] }}</td>
+                <td>
+                    <a class="back-link" href="/cancel/{{ b[0] }}"
+                    onclick="return confirm('Er du sikker på at du vil kansellere?');">
+                    Kanseller</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p><a class="back-link" href="/book">Bestill time</a></p>
+
+        <p><a class="back-link" href="/delete_user" onclick="return confirm('Er du sikker? All din data vil bli slettet.');">Slett min konto</a></p>
+
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+</body>
+</html>
