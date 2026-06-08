@@ -80,6 +80,14 @@ Det var lett å se hvilke oppgaver som var prioritert.
 ## 5. Databasebeskrivelse
  
 Databasenavn: nailsalon
+
+## Datamodell
+
+- `users` har mange `appointment` (en bruker kan ha flere bestillinger)
+- `users` har mange `faq_questions` (en bruker kan sende inn flere spørsmål)
+- `service` brukes i mange `appointment` (en tjeneste kan bookes mange ganger)
+- `appointment` kobler `users` og `service` sammen via fremmednøkler
+- `faq_questions` slettes automatisk når brukeren slettes (ON DELETE CASCADE)
  
 ### Tabeller
  
