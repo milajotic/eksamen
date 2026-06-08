@@ -2,7 +2,6 @@
  
 ### Deltakere
 - Mila
-- Helen
 ---
  
 ## 1. Prosjektidé og problemstilling
@@ -22,7 +21,10 @@ Kundene kan bestille når det passer dem, og negleteknikeren får bedre kontroll
 ### Målgruppe
 Målgruppen er personer som jevnlig tar manikyr eller andre neglbehandlinger.
  
-### Kanban-board
+### Plan for dagen
+- Admin-side (vis alle bestillinger,slett og rediger)
+- Brukerside(mine bestillinger, avbestill booking)
+- Oppdater Kanban-tavlen, rydd opp i koden, oppdater README
 https://github.com/users/milajotic/projects/3
  
 ---
