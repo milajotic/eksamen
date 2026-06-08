@@ -83,6 +83,8 @@ Databasenavn: nailsalon
 
 ## Datamodell
 
+![Datamodell](static/images/datamodell.png)
+
 - `users` har mange `appointment` (en bruker kan ha flere bestillinger)
 - `users` har mange `faq_questions` (en bruker kan sende inn flere spørsmål)
 - `service` brukes i mange `appointment` (en tjeneste kan bookes mange ganger)
