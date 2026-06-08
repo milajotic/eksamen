@@ -22,9 +22,9 @@ Kundene kan bestille når det passer dem, og negleteknikeren får bedre kontroll
 Målgruppen er personer som jevnlig tar manikyr eller andre neglbehandlinger.
  
 ### Plan for dagen
--Admin-side (vis alle bestillinger,slett og rediger)
--Brukerside(mine bestillinger + avbestill booking)
--Oppdater Kanban-tavlen, rydd opp i koden, oppdater README
+- Admin-side (vis alle bestillinger,slett og rediger)
+- Brukerside(mine bestillinger, avbestill booking)
+- Oppdater Kanban-tavlen, rydd opp i koden, oppdater README
 https://github.com/users/milajotic/projects/3
  
 ---
