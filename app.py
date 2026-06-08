@@ -164,9 +164,9 @@ def login():
         mydb.close()
 
         if user and user[2] == passord:
-            session["user_id"] = user[0]
-            session["username"] = user[1]
-            session["role"] = user[3]
+            session["user_id"] = user[0] #who is logged in
+            session["username"] = user[1] #their name
+            session["role"] = user[3] #their role, admin or user
             flash("Innlogget!")
             if user[3] == "admin":  
                 return redirect("/admin")
