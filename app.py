@@ -200,7 +200,17 @@ def edit_booking(cid):
     mydb.close()
     return render_template("edit_booking.html", appointment=appointment)
 
-
+@app.route("/admin/update", methods=["POST"])
+def update_booking():
+    bid = request.form["id"]
+    date = request.form["date"]
+    time = request.form["time"]
+    mydb = get_connection()
+    cursor = mydb.cursor()
+    cursor.execute("UPDATE appointment SET date = %s, time = %s WHERE id = %s", (date, time, bid))
+    mydb.commit()
+    cursor.close()
+    return redirect("/admin")
 
 @app.route("/delete_user")
 def delete_account():
