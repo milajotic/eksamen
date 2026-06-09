@@ -177,6 +177,31 @@ def login():
 
     return render_template("login.html")
 
+@app.route("/admin")
+def admin():
+    mydb = get_connection()
+    cursor = mydb.cursor()
+    cursor.execute(
+        "SELECT appointment.id, users.username, service.name, appointment.time FROM appointment JOIN users ON appointment.user_id = users.id JOIN service ON appointment.service_id = service.id"
+    )
+    bookings = cursor.fetchall()
+    mydb.close()
+    return render_template("admin.html", bookings=bookings)
+
+@app.route("/admin/edit/<int:cid>")
+def edit_booking(cid):
+    mydb = get_connection()
+    cursor = mydb.cursor()
+    cursor.execute(
+        "SELECT id, date, time FROM appointment WHERE id = %s", (cid,)
+    )
+    appointment = cursor.fetchone
+    cursor.close()
+    mydb.close()
+    return render_template("edit_booking.html", appointment=appointment)
+
+
+
 @app.route("/delete_user")
 def delete_account():
     if "user_id" not in session:
