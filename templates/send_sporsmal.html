@@ -21,6 +21,16 @@
         <a href="/">Tilbake</a>
     </div>
 
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <div class="booking">
         <form method="POST">
             Spørsmål:
@@ -31,16 +41,6 @@
 
         <p><a class="back-link" href="/faq">Tilbake til FAQ</a></p>
     </div>
-
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
 
 </body>
 </html>

@@ -21,6 +21,16 @@
         <a href="/">Tilbake</a>
     </div>
 
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+{% endwith %}
+
     <div class="login">
       <form method="POST">
         Email:
@@ -36,19 +46,6 @@
         Ingen bruker? <a href="/registrer">Registrer deg</a>
       </p>
     </div>
-
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-{% endwith %}
-
-
-
 
 </body>
 </html>

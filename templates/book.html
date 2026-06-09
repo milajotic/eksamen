@@ -21,6 +21,16 @@
         <a href="/">Tilbake</a>
     </div>
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <div class="booking">
         <form method="POST">
             Velg tjeneste:
@@ -51,16 +61,6 @@
 
         <p><a class="back-link" href="/user">Se mine bestillinger</a></p>
     </div>
-
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
     
 </body>
 </html>
