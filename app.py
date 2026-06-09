@@ -179,6 +179,9 @@ def login():
 
 @app.route("/admin")
 def admin():
+    if session.get("role") != "admin":
+        return redirect("/login")
+    
     mydb = get_connection()
     cursor = mydb.cursor()
     cursor.execute(
@@ -210,6 +213,17 @@ def update_booking():
     cursor.execute("UPDATE appointment SET date = %s, time = %s WHERE id = %s", (date, time, bid))
     mydb.commit()
     cursor.close()
+    return redirect("/admin")
+
+@app.route("/admin/delete/<int:cid>")
+def delete_appointment(cid):
+    mydb = get_connection()
+    cursor = mydb.cursor()
+    cursor.execute(
+        "DELETE FROM appointment WHERE id = %s", (cid,))
+    mydb.commit()
+    cursor.close()
+    mydb.close()
     return redirect("/admin")
 
 @app.route("/delete_user")
