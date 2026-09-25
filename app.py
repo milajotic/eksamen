@@ -226,6 +226,36 @@ def delete_appointment(cid):
     mydb.close()
     return redirect("/admin")
 
+@app.route("/user")
+def user():
+    if session.get("role") != "user":
+        return redirect("/login")
+    
+    mydb = get_connection()
+    cursor = mydb.cursor()
+    cursor.execute(
+        "SELECT appointment.id, users.username, service.name, appointment.date, appointment.time FROM appointment JOIN users ON appointment.user_id = users.id JOIN service ON appointment.service_id = service.id WHERE appointment.user_id = %s", (session["user_id"],))
+    bookings = cursor.fetchall()
+    mydb.close()
+    return render_template("user.html", bookings=bookings)
+
+@app.route("/cancel/<int:id>")
+def cancel(id):
+    if "user_id" not in session:
+        return redirect("/login")
+    
+    mydb = get_connection()
+    cursor = mydb.cursor()
+    cursor.execute(
+        "DELETE FROM appointment WHERE id=%s AND user_id=%s",
+        (id, session["user_id"])
+    )
+    mydb.commit()
+    cursor.close()
+    mydb.close()
+    flash("Bestilling kansellert")
+    return redirect("/user")
+
 @app.route("/delete_user")
 def delete_account():
     if "user_id" not in session:
